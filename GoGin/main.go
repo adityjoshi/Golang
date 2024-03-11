@@ -18,7 +18,7 @@ func main() {
 	})
 	r.GET("/getdata", getdata)
 	r.POST("/getdatapost", getpost)
-	r.GET("/query",getquery)
+	r.GET("/query", getquery)
 	r.Run()
 }
 
@@ -32,9 +32,14 @@ func getpost(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"hey": "post is working fine",
 	})
-func getquery(c *gin.Context) {
-	
 }
 
-
+func getquery(c *gin.Context) {
+	name := c.Query("name")
+	age := c.Query("age ")
+	c.JSON(200, gin.H{
+		"hey":  "Query String is working fine",
+		"name": name,
+		"age":  age,
+	})
 }
