@@ -1,4 +1,4 @@
-package lec2
+package main
 
 import (
 	"net/http"
@@ -20,7 +20,7 @@ func main() {
 	r.POST("/getdatapost", getpost)
 	r.GET("/query", getquery)
 	r.GET("/urlData/:name/:age", getUrlData)
-	r.Run()
+	http.ListenAndServe(":2426", r)
 }
 
 func getdata(c *gin.Context) {
