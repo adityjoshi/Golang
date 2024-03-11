@@ -19,6 +19,7 @@ func main() {
 	r.GET("/getdata", getdata)
 	r.POST("/getdatapost", getpost)
 	r.GET("/query", getquery)
+	r.GET("/urlData", getUrlData)
 	r.Run()
 }
 
@@ -34,6 +35,7 @@ func getpost(c *gin.Context) {
 	})
 }
 
+// http://localhost:8080/query?name=adi&age=19
 func getquery(c *gin.Context) {
 	name := c.Query("name")
 	age := c.Query("age ")
@@ -42,4 +44,17 @@ func getquery(c *gin.Context) {
 		"name": name,
 		"age":  age,
 	})
+}
+
+// http://localhost:8080/urlData/name/adi/age/19
+
+func getUrlData(c *gin.Context) {
+	name := c.Param("name")
+	age := c.Param("age")
+	c.JSON(200, gin.H{
+		"hey":  "Url data working",
+		"name": name,
+		"age":  age,
+	})
+
 }
