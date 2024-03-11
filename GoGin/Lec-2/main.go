@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +21,15 @@ func main() {
 	r.POST("/getdatapost", getpost)
 	r.GET("/query", getquery)
 	r.GET("/urlData/:name/:age", getUrlData)
-	http.ListenAndServe(":2426", r)
+	// to run it in custom port no => http.ListenAndServe(":2426", r)
+
+	server := &http.Server{
+		Addr:         ":2426",
+		Handler:      r,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
+	server.ListenAndServe()
 }
 
 func getdata(c *gin.Context) {
