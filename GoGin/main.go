@@ -46,7 +46,7 @@ func getquery(c *gin.Context) {
 	})
 }
 
-// http://localhost:8080/urlData/adi/19
+// http://localhost:8080/urlData/19
 
 func getUrlData(c *gin.Context) {
 	name := c.Param("name")
