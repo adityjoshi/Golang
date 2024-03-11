@@ -18,22 +18,23 @@ func main() {
 		})
 	})
 	//r.GET("/getdata", getdata)
-	r.POST("/getdatapost", getpost)
+	//r.POST("/getdatapost", getpost)
 	//r.GET("/query", getquery)
 	r.GET("/urlData/:name/:age", getUrlData)
 	// to run it in custom port no => http.ListenAndServe(":2426", r)
 
+	// Router Grouping
 
-	// Router Grouping 
-
-	admin := r.Group("/admin") {
-		admin.Get("/getdata", getdata)
+	admin := r.Group("/admin")
+	{
+		admin.GET("/getdata", getdata)
+		admin.POST("/getdatapost", getpost)
 	}
 
-client := r.Group("/client") {
-	client.Get("/query",getquery)
-}
-
+	client := r.Group("/client")
+	{
+		client.GET("/query", getquery)
+	}
 
 	server := &http.Server{
 		Addr:         ":2426",
