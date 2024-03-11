@@ -19,7 +19,7 @@ func main() {
 	r.GET("/getdata", getdata)
 	r.POST("/getdatapost", getpost)
 	r.GET("/query", getquery)
-	r.GET("/urlData", getUrlData)
+	r.GET("/urlData/:name/:age", getUrlData)
 	r.Run()
 }
 
@@ -46,7 +46,7 @@ func getquery(c *gin.Context) {
 	})
 }
 
-// http://localhost:8080/urlData/name/adi/age/19
+// http://localhost:8080/urlData/adi/19
 
 func getUrlData(c *gin.Context) {
 	name := c.Param("name")
