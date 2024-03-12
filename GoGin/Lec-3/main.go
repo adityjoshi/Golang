@@ -17,6 +17,12 @@ func main() {
 	// to apply middle ware to specific route we can do this => r.GET("/getData3", middleware.Authenticate, secondData)
 	r.GET("/getData3", thirdData)
 
+	// middle ware to a group
+	admin := r.Group("/admin", middleware.Authenticate)
+	{
+		admin.GET("/getData1", firstData)
+	}
+
 	server := &http.Server{
 		Addr:    ":2426",
 		Handler: r,
