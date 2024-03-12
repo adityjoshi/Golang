@@ -32,11 +32,11 @@ func firstData(c *gin.Context) {
 }
 func secondData(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"data": "data 1 ",
+		"data": "data 2 ",
 	})
 }
 func thirdData(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"data": "data 1 ",
+		"data": "data 3",
 	})
 }
