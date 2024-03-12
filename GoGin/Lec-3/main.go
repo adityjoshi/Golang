@@ -9,10 +9,12 @@ import (
 
 func main() {
 	r := gin.New()
+	// here the middle ware is applied to all the routes
 	r.Use(middleware.Authenticate)
 	r.Use(gin.Logger())
 	r.GET("/getData1", firstData)
 	r.GET("/getData2", secondData)
+	// to apply middle ware to specific route we can do this => r.GET("/getData3", middleware.Authenticate, secondData)
 	r.GET("/getData3", thirdData)
 
 	server := &http.Server{
