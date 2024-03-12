@@ -1,0 +1,38 @@
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.New()
+	r.Use(gin.Logger())
+	r.GET("/getData1", firstData)
+	r.GET("/getData2", secondData)
+	r.GET("/getData3", thirdData)
+
+	server := &http.Server{
+		Addr:    ":2426",
+		Handler: r,
+	}
+	server.ListenAndServe()
+
+}
+
+func firstData(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"data": "data 1 ",
+	})
+}
+func secondData(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"data": "data 1 ",
+	})
+}
+func thirdData(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"data": "data 1 ",
+	})
+}
