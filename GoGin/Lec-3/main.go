@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GoGin/Lec-3/middleware"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -8,6 +9,7 @@ import (
 
 func main() {
 	r := gin.New()
+	r.Use(middleware.Authenticate)
 	r.Use(gin.Logger())
 	r.GET("/getData1", firstData)
 	r.GET("/getData2", secondData)
